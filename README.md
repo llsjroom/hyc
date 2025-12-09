@@ -10,12 +10,7 @@
 
 /
 ├── book-main/ # 사용자용 중고책 사이트
-│ ├── book-main/ # 실제 사용자 서비스 코드
-│
 ├── bookManager-main/ # 관리자 페이지
-│ ├── bookManager-main/ # 관리자 기능 구현 코드
-│
-└── .gitignore
 
 
 ---
