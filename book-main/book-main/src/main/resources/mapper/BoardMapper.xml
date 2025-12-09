@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.board.BoardMapper">
+  
+  <select id="noticeList" resultType="com.example.demo.dto.NoticeDto">
+    select * from notice
+    order by id desc
+    <!-- limit #{index}, 5 -->
+  </select>
+
+  <select id="noticeListPaging" resultType="com.example.demo.dto.NoticeDto">
+    SELECT * FROM notice
+    ORDER BY id DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="noticeCount" resultType="int">
+    SELECT COUNT(*) FROM notice
+  </select>
+
+  <select id="noticeView" resultType="com.example.demo.dto.NoticeDto">
+    select * from notice
+    where id=#{id}
+  </select>
+
+  <update id="noticeReadnum">
+    update notice
+    set readnum=readnum+1
+    where id=#{id}
+  </update>
+
+  <!-- 이벤트 -->
+  <select id="eventList" resultType="com.example.demo.dto.EventDto">
+    select * from event
+    order by id desc
+    <!-- limit #{index}, 5 -->
+  </select>
+
+  <select id="eventListPaging" resultType="com.example.demo.dto.EventDto">
+    SELECT * FROM event
+    ORDER BY id DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="eventCount" resultType="int">
+    SELECT COUNT(*) FROM event
+  </select>
+
+  <select id="eventView" resultType="com.example.demo.dto.EventDto">
+    select * from event
+    where id=#{id}
+  </select>
+
+  <update id="eventReadnum">
+    update event
+    set readnum=readnum+1
+    where id=#{id}
+  </update>
+</mapper>

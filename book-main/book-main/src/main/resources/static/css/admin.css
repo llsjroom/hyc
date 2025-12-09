@@ -1,0 +1,432 @@
+/* 공통 */
+[class*="btn0"] {
+  border: none;
+  transition: background .3s ease-in;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.btn01 {
+  background: #4A90E2;
+  /* border: 1px solid #2C6CC9; */
+  color: #fff;
+}
+.btn01:hover {
+  background: #2C6CC9;
+}
+.btn02 {
+  background-color: #888;
+  /* border: 1px solid #666; */
+  color: #fff;
+}
+.btn02:hover {
+  background: #666;
+}
+.btn03 {
+  background: #fff;
+  border: 1px solid #4A90E2;
+  color: #4A90E2;
+}
+.btn03:hover {
+  border: 1px solid #2C6CC9;
+}
+.btn04 {
+  background: #fff;
+  border: 1px solid #888;
+  color: #666;
+}
+.btn04:hover {
+  border: 1px solid #666;
+  color: #4b4b4b;
+}
+
+.paging {
+margin-top: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.paging a {
+margin: 0 5px;
+}
+.paging a.prev01 {
+width: 30px;
+height: 30px;
+background: url(/static/images/admin/pageP_01.png) center center / contain no-repeat;
+}
+.paging a.prev02 {
+width: 30px;
+height: 30px;
+background: url(/static/images/admin/pageP_02.png) center center / contain no-repeat;
+}
+.paging a.next01 {
+width: 30px;
+height: 30px;
+background: url(/static/images/admin/pageN_01.png) center center / contain no-repeat;
+}
+.paging a.next02 {
+width: 30px;
+height: 30px;
+background: url(/static/images/admin/pageN_02.png) center center / contain no-repeat;
+}
+.paging .pageList {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.paging .pageList li {
+padding: 0 5px;
+}
+.paging .pageList a {
+width: 30px;
+height: 30px;
+font-size: 20px;
+line-height: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.paging .pageList .now a {
+background-color: #1c1c1c;
+color: #fff;
+border-radius: 50%;
+}
+.paging .disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+.paging .now {
+  pointer-events: none;
+  /* cursor: default; */
+}
+
+/* 관리자메인 */
+#admin.inner {
+  padding: 100px 0 50px;
+}
+#admin .tab {
+  width: 100%;
+}
+#admin .tab .tabTit {
+  position: relative;
+  padding: 10px;
+  padding-left: 40px;
+  color: #495057;
+  font-weight: 600;
+  display: block;
+  background: #F0F6FB;
+}
+#admin .tab .tabTit::before,
+#admin .tab .tabTit::after {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%) rotate(45deg);
+  content:"";
+}
+#admin .tab .tabTit::before {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border: 1px solid #4A90E2;
+}
+#admin .tab .tabTit::after {
+  margin-left: 2px;
+  width: 6px;
+  height: 6px;
+  background: #4A90E2;
+}
+#admin .tab .tabList {
+  margin: 50px;
+  display: flex;
+  list-style: disc;
+}
+#admin .tab .tabList li {
+  padding: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+#admin .tab .tabList li a:hover {
+  text-decoration: underline;
+}
+
+/* 게시판목록 */
+#list {
+  padding: 50px 0;
+  color: #495057;
+}
+#list h3.page {
+  margin-bottom: 20px;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #1c1c1c;
+}
+#list table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  border-top: 1px solid #1c1c1c;
+  border-bottom: 1px solid #1c1c1c;
+}
+#list table th,
+#list table td {
+  padding: 15px 10px;
+  color: #1c1c1c;
+}
+#list table th {
+  border-bottom: 1px solid #1c1c1c;
+}
+#list table tr:not(:first-child) td {
+  border-top: 1px solid #ADB5BD;
+}
+#list table td:not(.tit) {
+  text-align: center;
+}
+#list table td.tit a:hover {
+  text-decoration: underline;
+}
+#list table td .btnWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+#list table td .btnWrap [class^="btn"] {
+  padding: 5px;
+  width: 60px;
+}
+#list table td .noList {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#list table + .btnWrap {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+}
+#list table + .btnWrap [class^="btn"] {
+  padding: 0 10px;
+  min-width: 80px;
+  height: 40px;
+}
+#list table + .btnWrap [class^="btn"] +  [class^="btn"] {
+  margin-left: 10px;
+}
+
+/* 게시판등록, 게시판수정 */
+#register {
+  padding: 50px 0;
+  color: #495057;
+}
+#register h3.page {
+  margin-bottom: 20px;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #1c1c1c;
+}
+#register .tableBg {
+  padding: 50px;
+  background-color: #F0F6FB;
+  border-top: 1px solid #1c1c1c;
+}
+#register table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+#register table th,
+#register table td {
+  padding: 0 5px;
+  color: #1c1c1c;
+}
+#register table th {
+  position: relative;
+  text-align: left;
+  padding-top: 10px;
+}
+#register table td input,
+#register table td textarea,
+#register table td select {
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+  outline: none;
+}
+#register table td input[type="text"],
+#register table td input[type="date"],
+#register table td select {
+  padding: 10px;
+  height: 40px;
+}
+#register table td input[type="file"] {
+  padding: 10px;
+  /* height: 40px; */
+}
+#register table td textarea {
+  padding: 10px;
+  height: 300px;
+  resize: none;
+  outline: none;
+  line-height: 1.4;
+}
+#register table th .fileBtn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+#register table th .fileBtn input[type="button"] {
+  width: 20px;
+  height: 20px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+#register table th .fileBtn input[type="button"] + input[type="button"] {
+  margin-left: 10px;
+}
+#register table th .fileBtn #fileAdd {
+  background: url(/static/images/admin/fileAdd.png) center center / 15px no-repeat;
+}
+#register table th .fileBtn #fileDel {
+  background: url(/static/images/admin/fileDel.png) center center / 15px no-repeat;
+}
+
+#register .btnWrap {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+#register .btnWrap [class*="btn"] {
+  width: 80px;
+  height: 40px;
+}
+#register .btnWrap a,
+#register .btnWrap input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+#register .btnWrap a + input {
+  margin-left: 10px;
+}
+#register #fileList p {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  margin: 5px 0;
+  border: 2px dotted #fff;
+}
+#register #fileList p + p {
+  margin-left: 10px;
+}
+#register #fileList p a {
+  margin: 0 5px;
+}
+#register #fileList p .btnRemove {
+  width: 20px;
+  height: 20px;
+  background: url(/static/images/admin/fileRemove.png) center center / 12px auto no-repeat;
+  font-size: 0;
+  border: none;
+  cursor: pointer;
+}
+
+#register .dateWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#register .dateWrap input[type=date],
+#register .dateWrap select {
+  flex:1;
+}
+#register .dateWrap input[type=date]:first-child {
+  margin-right: 5px;
+}
+#register .dateWrap input[type=date]:nth-of-type(2),
+#register .dateWrap select {
+  margin-left: 5px;
+}
+
+
+/*주문관리*/
+#list.orderWrap .stateBox {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+#list.orderWrap .stateBox select {
+  margin: 5px 0;
+  padding: 5px;
+  width: 120px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+  outline: none;
+}
+#list.orderWrap .stateBox [class^=btn0] {
+  width: 100px;
+  height: 30px;
+}
+
+/* 회원관리 */
+#list.userWrap td .btnWrap {
+  flex-direction: row;
+}
+#list.userWrap td input[type=text],
+#list.userWrap td input[type=number] {
+  margin: 5px 0;
+  padding: 5px;
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+}
+
+/*
+참고
+
+Bg
+#F8F9FA (footer)
+
+EAF3FC
+F0F6FB
+F3F8FD
+F6FAFD
+
+Border
+#EDEDED
+
+Point
+#4A90E2
+
+Text
+#1C1C1C
+#495057 (기본)
+#6C757D (중간강조_부제, 설명)
+#868E96 (흐릿한느낌_부가정보, 날씨)
+#ADB5BD	(연한느낌_placeholder)
+
+
+etc
+#F5F5F5 (라이트 그레이)
+*/

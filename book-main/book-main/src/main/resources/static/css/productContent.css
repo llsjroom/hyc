@@ -1,0 +1,741 @@
+@charset "UTF-8";
+/* 공통 */
+[class*="btn0"] {
+  border: none;
+  transition: background .3s ease-in;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  width: 80px;
+  height: 40px;
+  box-sizing: border-box;
+}
+.btn01 {
+  background: #4A90E2;
+  /* border: 1px solid #2C6CC9; */
+  color: #fff;
+}
+.btn01:hover {
+  background: #2C6CC9;
+}
+.btn02 {
+  background-color: #888;
+  /* border: 1px solid #666; */
+  color: #fff;
+}
+.btn02:hover {
+  background: #666;
+}
+.btn03 {
+  background: #fff;
+  border: 1px solid #4A90E2;
+  color: #4A90E2;
+}
+.btn03:hover {
+  border: 1px solid #2C6CC9;
+}
+.btn04 {
+  background: #fff;
+  border: 1px solid #888;
+  color: #666;
+}
+.btn04:hover {
+  border: 1px solid #666;
+  color: #4b4b4b;
+}
+
+
+#productContent {
+  padding: 50px 0;
+}
+/* 상단 도서 */
+.topBox {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+/* 상단 도서: 이미지 */
+.imgBox {
+  padding: 50px;
+  background: #f8f8f880;
+  flex: 0 0 400px;
+}
+#mainPimg {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+/* mini thumbnail */
+#subImages {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+#subImages li {
+  width: 50px;
+  height: 73px;
+  border: 2px solid #fff;
+  transition: border 0.2s;
+  overflow: hidden;
+}
+#subImages li:hover {
+  border: 2px solid #ADB5BD;
+}
+#subImages img {
+  width: 100%;
+  cursor: pointer;
+}
+/* 상단 도서: 정보 */
+.infoBox {
+  padding: 50px 100px;
+  width: 580px;
+}
+.titBox {
+  padding: 15px 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.titBox .tit {
+  max-width: 100%;
+  font-size: 28px;
+}
+.titBox #jImg {
+  flex: 0;
+  width: 30px;
+  height: 30px;
+}
+.hprice {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #1c1c1c;
+}
+.hprice .discount {
+  font-size: 24px;
+  color: #ff4800;
+  font-weight: 600;
+}
+.hprice .price {
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  gap: 10px;
+}
+.hprice .price .disPrice {
+  font-size: 28px;
+}
+.hprice .price .disPrice span {
+  font-size: 14px;
+}
+.hprice .price .oriPrice {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+.info {
+  padding: 30px 5px;
+  font-size: 14px;
+}
+.info + .info {
+  border-top: 1px solid #ADB5BD;
+}
+.info dt {
+  font-weight: 600;
+}
+.info dd {
+  margin-top: 10px;
+}
+.info dd div + div {
+  margin-top: 8px;
+}
+#gumae .total {
+  padding: 30px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f8f880;
+  border-top: 1px solid #1c1c1c;
+}
+.total #number {
+  border: 1px solid #ADB5BD;
+}
+/* 수량 버튼 */
+#number {
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+#number .minus,
+#number .plus {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+#number .minus:after,
+#number .plus:after,
+#number .plus:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 2px;
+  background: #4b4b4bcc;
+  content:""
+}
+#number .plus:before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+#number input[type="text"] {
+  background: none;
+  border: 1px solid #ADB5BD;
+  border-top: none;
+  border-bottom: none;
+  width: 50px;
+  height: 24px;
+  text-align: center;
+  font-size: 16px;
+}
+.total #totalPrice {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ff4800;
+}
+.total #totalPrice span {
+  font-size: 14px;
+  font-weight: 400;
+}
+#gumae .btnWrap {
+  margin-top:20px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+}
+#gumae .btnWrap [class^=btn0] {
+  width: 50%;
+  height: 50px;
+  font-weight: 600;
+}
+/* 장바구니 메시지 박스 */
+#cartMsg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  min-width: 200px;
+  background-color: #4b4b4bcc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+#cartMsg [class^=btn0] {
+  margin: 20px auto 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+}
+
+
+/* 메뉴 */
+#menu {
+  margin-top: 50px;
+  background: #f8f8f8;
+  position: sticky;
+  top: 93px;
+}
+#menuUl {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+#menuUl li {
+  width: 100%;
+  cursor: pointer;
+}
+#menuUl > li > a {
+  text-align: center;
+}
+#menuUl .subMenu {
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s;
+}
+#menuUl .subMenu a {
+  padding: 10px 15px;
+  display: block;
+  color: #6C757D;
+  font-weight: 600;
+}
+#menuUl .subMenu.now {
+  background-color: #4A90E2;
+}
+#menuUl .subMenu.now a {
+  color: #fff;
+}
+#menu ~ div + div {
+  border-top: 2px dashed #F5F5F5;
+}
+
+#content, #review, #inquiry, #guide {
+  padding: 100px 0;
+    /* background-color: white;
+    
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px; */
+}
+.secView .secTit {
+  padding-bottom: 15px;
+  font-size: 22px;
+  color: #1c1c1c;
+  font-weight: 600;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+/* 리뷰 */
+#reviewHeader #reviewLabel {
+  font-size: 22px;
+}
+#reviewHeader #star {
+  color: #ff4800;
+  font-size: 16px;
+}
+#reviewHeader + .reviewList {
+  border-top: 1px solid #1c1c1c;
+}
+.reviewList {
+  padding: 10px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.reviewList + .reviewList {
+  border-top: 1px solid #ADB5BD;
+}
+.reviewList:last-child {
+  border-bottom: 1px solid #1c1c1c;
+}
+.reviewList .listUser {
+  font-size: 14px;
+  color: #6C757D;
+  font-weight: 600;
+  flex: 0 0 100px;
+}
+.reviewList .listUser span {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  display: block;
+}
+.reviewList .reviewBox {
+  width: 100%;
+}
+.reviewList .listCont {
+  margin: 5px 0;
+}
+.reviewList .btnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+}
+.reviewList [class^=btn0] {
+  width: 60px;
+  height: 20px;
+  font-size: 12px;
+}
+
+#inquiry .secTit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#inquiry .secTit [class^=btn0] {
+  width: 60px;
+  height: 30px;
+  font-size: 12px;
+}
+#inquiryList li {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  padding: 10px;
+}
+#inquiryList li + li {
+  border-top: 1px solid #ADB5BD;
+}
+#inquiryList li + li.reply {
+  border-top: 1px dashed #ADB5BD;
+}
+#inquiryList li:last-child {
+  border-bottom: 1px solid #1c1c1c;
+}
+#inquiryList li [class^=label0] {
+  flex: 0 0 auto;
+  margin: 2px 0;
+  padding: 0 5px;
+  font-size: 12px;
+  color: #fff;
+}
+#inquiryList li .label01 {
+  background-color: #666;
+}
+#inquiryList li .label02 {
+  position: relative;
+  margin-left: 28px;
+  background-color: #4A90E2;
+}
+#inquiryList li .label02:after {
+  position: absolute;
+  top: -9px;
+  left: -28px;
+  width: 30px;
+  height: 30px;
+  background: url(/static/images/common/reply.png) center center / 20px 20px no-repeat;
+  transform: rotate(180deg);
+  opacity: .8;
+  content:"";
+}
+#inquiryList li .inquiryBox {
+  padding-left: 10px;
+  width: 100%;
+}
+#inquiryList li .inquiryBox .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+#inquiryList li .inquiryBox .top .title {
+  font-weight: 600;
+  width: 100%;
+}
+#inquiryList li .inquiryBox .top [class^=btn0] {
+  flex: 0 0 55px;
+  height: 20px;
+  font-size: 12px;
+}
+#inquiryList li .inquiryBox .cont {
+  padding: 5px 0;
+}
+
+#inquiryList li .inquiryBox .top .user,
+#inquiryList li .inquiryBox .date {
+  color: #868E96;
+  font-size: 14px;
+}
+#inquiryList li .inquiryBox .date {
+  text-align: right;
+}
+#inquiryList li .inquiryBox #commentBox {
+  display: none;
+  height: 0;
+  transition: all .3 ease;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #ADB5BD;
+}
+#inquiryList li .inquiryBox #commentBox.show {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 50px;
+  display: flex;
+  transition: all .3 ease;
+  
+}
+#inquiryList li .inquiryBox #commentBox textarea,
+#inquiryList li .inquiryBox #commentBox .btn01 {
+  height: 50px;
+}
+#inquiryList li .inquiryBox #commentBox textarea {
+  width: 100%;
+  border: 1px solid #ADB5BD;
+  resize: none;
+  outline: none;
+}
+#inquiryList li .inquiryBox #commentBox .btn01 {
+  width: 50px;
+  /* height: 100%; */
+}
+#inquiryList li + li.reply form {
+  width: 100%;
+}
+#inquiryList li + li.reply [id^=commentBox_] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+#inquiryList li + li.reply [class^=btn0] {
+  flex: 0 0 55px;
+  height: 55px;
+}
+#inquiryList li + li.reply textarea {
+  width: 100%;
+  height: 55px;
+  padding: 5px 5px 24px;
+  border: 1px solid #ADB5BD;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+}
+
+/* 리뷰수정, 문의하기 레이어 */
+#reviewUpForm,
+#inquiryForm {
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 21;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border: 1px solid #ADB5BD;
+}
+#reviewUpForm .inputBox,
+#inquiryForm .inputBox {
+  position: relative;
+  margin: 10px 0;
+}
+#reviewUpForm .inputBox input[type=text] {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ADB5BD;
+  box-sizing: border-box;
+}
+#reviewUpForm .inputBox input[type=text] + textarea {
+  margin-top: 10px;
+}
+#reviewUpForm .inputBox textarea,
+#inquiryForm .inputBox textarea {
+  padding: 5px 5px 24px;
+  width: 400px;
+  height: 160px;
+  border: 1px solid #ADB5BD;
+  outline: none;
+  resize: none;
+  display: block;
+}
+#reviewUpForm .inputBox textarea + p,
+#inquiryForm .inputBox textarea + p {
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  background-color: #fff;
+  padding: 5px;
+  font-size: 12px;
+  color: #868E96;
+  text-align: right;
+  line-height: 14px;
+}
+#reviewUpForm .btn01,
+#inquiryForm .btn01 {
+  float: right;
+}
+#reviewUpForm .btn01::after,
+#inquiryForm .btn01::after {
+  display: block;
+  content:"";
+  clear: both;
+}
+#reviewUpForm .btnClose,
+#inquiryForm .btnClose {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 24px;
+  height: 24px;
+  background: url(/static/images/common/close.png) center center / 16px no-repeat;
+  font-size: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#reviewUpForm + .mask,
+#inquiryForm + .mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000cc;
+  content:"";
+  z-index: 20;
+}
+
+/* 리뷰 카드 스타일 통합 */
+.review-card, .review-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fefefe;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    word-break: break-word;
+}
+
+.review-card:hover, .review-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* 리뷰 상단: 사용자명 + 제목 */
+.review-item b:first-child {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.review-item b:nth-child(2) {
+    display: block;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 8px;
+}
+
+/* 리뷰 내용 */
+.review-item div:nth-child(3) {
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* 리뷰 액션 영역 (수정|삭제|신고) */
+.review-item div[align="right"] a,
+.review-item div[align="right"] span {
+    margin-left: 10px;
+    font-size: 16px; /* 문의하기 버튼과 동일 */
+    color: #007BFF;
+    text-decoration: none;
+    cursor: pointer; 
+}
+
+.review-item div[align="right"] a:hover {
+    text-decoration: underline;
+}
+
+/* 신고하기 span 별도 스타일 */
+.review-item div[align="right"] span.report {
+    color:#ff4d4f !important; /* 원하는 색상으로 바꿔주세요 */
+    font-size: 30px !important; /* 문의하기 버튼과 동일 */
+    cursor: pointer;
+    margin-left: 5px; /* 왼쪽으로 조금 이동 */
+}
+/* 리뷰 작성/수정 폼 */
+/* .reviewUpForm h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.reviewUpForm input[type="text"],
+.reviewUpForm textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.reviewUpForm input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.reviewUpForm input[type="submit"]:hover {
+    background-color: #2980b9;
+} */
+
+#reviewHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#reviewLabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+#star {
+    font-size: 15px;
+    color: #2b2b2b;
+}
+
+/* ========================= */
+/* 문의 카드 스타일 추가 (table 제거) */
+.inqCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.inqCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.inqCard.question {
+    border-left: 5px solid #ff9800;
+}
+
+.inqCard.answer {
+    border-left: 5px solid #2196f3;
+    background-color: #eef6ff;
+}
+
+.inqType {
+    width: 70px;
+    font-weight: bold;
+}
+
+.inqUser {
+    width: 150px;
+    color: #555;
+}
+
+.inqContent {
+    flex: 1;
+    padding: 0 10px;
+    color: #333;
+}
+
+.inqDate {
+    width: 100px;
+    text-align: right;
+    color: #999;
+    font-size: 0.9em;
+}

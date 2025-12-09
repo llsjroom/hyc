@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.lecture.LectureMapper">
+  <select id="lectureMain" resultType="com.example.demo.lecture.LectureDto">
+    select * from lecture
+    order by id desc
+    <!-- limit #{index}, 5 -->
+  </select>
+
+  <select id="lectureMainPaging" resultType="com.example.demo.lecture.LectureDto">
+    SELECT * FROM lecture
+    ORDER BY id DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="lectureCount" resultType="int">
+    SELECT COUNT(*) FROM lecture
+  </select>
+
+  <select id="reserve" resultType="com.example.demo.lecture.LectureDto">
+    select * from lecture
+    where id=#{id}
+  </select>
+
+  <insert id="reserveOk">
+    insert into lecturereserve (id,userid,date,time,people,book,total,saveday,code)
+    values(#{id},#{userid},#{date},#{time},#{people},#{book},#{total},#{saveday},#{code})
+  </insert>
+
+  <!-- 전체 예약 가능 수 -->
+  <select id="getTotalMaxPeople" resultType="int">
+    select coalesce(sum(max),0) from lecture
+  </select>
+
+  <!-- 현재까지 예약된 사람 수 -->
+  <select id="getTotalReservedPeople" resultType="int">
+    select coalesce(sum(people),0) from lecturereserve
+  </select>
+</mapper>

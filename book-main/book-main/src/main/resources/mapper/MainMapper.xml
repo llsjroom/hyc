@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.main.MainMapper">
+  <select id="newList">
+    select * from product order by writeday desc limit 5
+  </select>
+  <select id="lowList">
+    select * from product order by price asc limit 5
+  </select>
+  <select id="highList">
+    select * from product order by price desc limit 5
+  </select>
+</mapper>

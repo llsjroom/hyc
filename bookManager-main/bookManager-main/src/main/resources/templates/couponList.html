@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default"
+>
+<head>
+<meta charset="UTF-8">
+<title>쿠폰 목록</title>
+ <style>
+  #inputCoupon {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px 20px;
+    width:300px;
+    background:white;
+    border:1px solid #222;
+    display: none;
+  }
+  #inputCoupon.open {
+    display: block;
+  }
+  #inputCoupon div + div {
+    margin-top: 6px;
+  }
+  #inputCoupon select,
+  #inputCoupon input[type=text] {
+    padding: 0 5px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #222;
+    background: #fff;
+    display: block;
+    box-sizing: border-box;
+    outline: none;
+  }
+  #inputCoupon .btnWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  #inputCoupon .btnWrap input[type=submit],
+  #inputCoupon .btnWrap input[type=button] {
+    padding: 0 10px;
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    background: #222;
+    border: 1px solid #222;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 0 3px #999;
+    cursor: pointer;
+  }
+  #inputCoupon .btnWrap input[type=button] {
+    background-color: #666;
+    border: 1px solid #555;
+  }
+ </style>
+<script>
+  function check(form)
+  {
+    if(form.afterDay.value=="")
+      form.afterDay.value=0;
+
+      return true;
+  }
+  function viewform()
+  {
+    document.getElementById("inputCoupon").classList.add("open");
+  }
+  function hideform()
+  {
+    // fomr의 action을 couponOk로
+    document.getElementById("cform").action="couponOk";
+    document.getElementById("title").innerText="쿠폰 등록";
+    document.getElementById("submit").value="등록";
+
+    // 입력값 초기화
+    document.getElementById("scope").selectedIndex=0;
+    document.getElementById("halin").value="";
+    document.getElementById("gigan").value="";
+    document.getElementById("afterDay").value="";
+    document.getElementById("inputCoupon").classList.remove("open");
+  }
+  function delCoupon(id)
+  {
+    location="delCoupon?id="+id
+  }
+  function upCoupon(scope,halin,gigan,afterDay,id)
+  {
+    document.getElementById("inputCoupon").classList.add("open");
+
+    // ""을없애기
+    scope=scope.replace(/"/g,"");
+    gigan=gigan.replace(/"/g,"");
+
+    if(gigan=="null")
+      gigan="";
+
+    if(afterDay=="null")
+      afterDay="";
+
+    document.getElementById("scope").value=scope;
+    document.getElementById("halin").value=halin;
+    document.getElementById("gigan").value=gigan;
+    document.getElementById("afterDay").value=afterDay;
+
+    document.getElementById("cform").action="upCoupon";
+    document.getElementById("title").innerText="쿠폰 수정";
+    document.getElementById("submit").value="수정";
+    document.getElementById("id").value=id;
+  }
+</script>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <section>
+    <div id="inputCoupon">
+      <form method="post" action="couponOk" id="cform" onsubmit="return check(this)">
+        <input type="hidden" name="id" id="id" value="0">
+        <h3 align="center" id="title">쿠폰등록</h3>
+          <div>
+            <select name="scope" id="scope">
+              <th:block th:each="ddto:${dlist}">
+                <option th:value="${ddto.code}" th:text="${ddto.name}"></option>
+              </th:block>
+            </select>
+          </div>
+          <div><input type="text" name="halin" id="halin" placeholder="할인율"></div>
+          <div><input type="text" name="gigan" id="gigan" placeholder="사용기간"></div>
+          <div><input type="text" name="afterDay" id="afterDay" placeholder="발행후 몇일"></div>
+          <div class="btnWrap"><input type="submit" id="submit"value="쿠폰등록"><input type="button" value="닫기" onclick="hideform()"></div>        </h3>
+      </form>
+    </div>
+    <table>
+      <caption>
+        <h3>
+          쿠폰 목록
+          <input type="button" value="쿠폰추가" onclick="viewform()">
+        </h3>
+      </caption>
+      <tr align="center">
+        <td>코드</td>
+        <td>범위</td>
+        <td>할인율</td>
+        <td>기간</td>
+        <td>발행후 사용일</td>
+        <td>발행일</td>
+        <td>수정</td>
+        <td>삭제</td>
+      </tr>
+      <tr align="center" th:each="cdto:${clist}">
+        <td th:text="${cdto.code}"></td>
+        <td th:switch="${cdto.scope}">
+          <sapn th:case="'A1'">소설/문학</sapn>
+          <span th:case="'B1'">비소설/교양</span>
+          <span th:case="'C1'">경제/경영</span>
+          <span th:case="'D1'">과학/기술</span>
+        </td>
+        <td th:text="${cdto.halin}"></td>
+        <td th:text="${cdto.gigan}"></td>
+        <td th:text="${cdto.afterDay}"></td>
+        <td th:text="${cdto.writeday}"></td>
+        <td><input type="button" value="수정" th:onclick="upCoupon('[[${cdto.scope}]]' , [[${cdto.halin}]] , '[[${cdto.gigan}]]' , [[${cdto.afterDay}]] , [[${cdto.id}]])"></td>
+        <td><input type="button" value="삭제" th:onclick="delCoupon([[${cdto.id}]])"></td>
+      </tr>
+    </table>
+  </section>
+</th:block>
+</body>
+</html>

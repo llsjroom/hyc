@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/* 전체 페이지 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* 전체 section */
+
+section {
+    width: 950px;
+    margin: 50px auto; /* 화면 위쪽에서 조금 내려오게 */
+}
+
+/* 주문 완료 박스 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 제목 (캡션) */
+caption h2 {
+    margin: 25px 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* 셀 기본 스타일 */
+td {
+    padding: 25px;
+    vertical-align: top;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* 상품 목록 */
+td div {
+	 display: flex;
+    justify-content: space-between; /* 좌-우 배치 */
+    align-items: center;
+    margin: 8px 0;
+}
+
+/* 수령/결제 정보 제목 */
+h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #2d6cdf;
+    border-bottom: 2px solid #2d6cdf;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* 항목 라벨 */
+.ff {
+    display: inline-block;
+    min-width: 85px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* 결제 금액 강조 */
+td:last-child div:last-child {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e63946;
+}
+
+/* 상품명 & 배송 */
+td span {
+    font-size: 0.95rem;
+}

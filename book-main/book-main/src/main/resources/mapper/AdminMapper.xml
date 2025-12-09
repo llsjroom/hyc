@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.admin.AdminMapper">
+  <select id="adminNotice" resultType="com.example.demo.dto.NoticeDto">
+    select * from notice
+    order by id desc
+  </select>
+
+  <select id="adminNoticePaging" resultType="com.example.demo.dto.NoticeDto">
+    SELECT * FROM notice
+    ORDER BY id DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="noticeCount" resultType="int">
+    SELECT COUNT(*) FROM notice
+  </select>
+
+  <insert id="noticeRegisterOk" parameterType="com.example.demo.dto.NoticeDto">
+    insert into notice(title,content,file,writeday)
+    values(#{title},#{content},#{file},now())
+  </insert>
+
+  <select id="noticeModify" resultType="com.example.demo.dto.NoticeDto">
+    select * from notice
+    where id=#{id}
+  </select>
+
+  <update id="noticeModifyOk" parameterType="com.example.demo.dto.NoticeDto">
+    update notice
+    set title=#{title}, content=#{content}, file=#{file}
+    where id=#{id}
+  </update>
+
+  <!-- 이벤트 -->
+  <select id="adminEvent" resultType="com.example.demo.dto.EventDto">
+    select * from event
+    order by id desc
+  </select>
+
+  <select id="adminEventPaging" resultType="com.example.demo.dto.EventDto">
+    SELECT * FROM event
+    ORDER BY id DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="eventCount" resultType="int">
+    SELECT COUNT(*) FROM event
+  </select>
+
+  <insert id="eventRegisterOk" parameterType="com.example.demo.dto.EventDto">
+    insert into event(title,content,file,writeday)
+    values(#{title},#{content},#{file},now())
+  </insert>
+
+  <select id="eventModify" resultType="com.example.demo.dto.EventDto">
+    select * from event
+    where id=#{id}
+  </select>
+
+  <update id="eventModifyOk" parameterType="com.example.demo.dto.EventDto">
+    update event
+    set title=#{title}, content=#{content}, file=#{file}
+    where id=#{id}
+  </update>
+    
+  <select id="getAdminOrder" resultType="com.example.demo.dto.OrderDto">
+    select g.id,g.userid,m.name,m.phone,g.pcode,g.su,g.cprice,g.state,g.writeday,g.jumuncode
+    from gumae g join member m on g.userid=m.userid order by g.id desc
+  </select>
+  
+  <update id="chgState">
+    update gumae set state=#{state} where id=#{id}
+  </update>
+  
+  <update id="upMember">
+    update member set name=#{name}, juk=#{juk} where userid=#{userid}
+  </update>
+  
+  <delete id="delMember">
+    delete from member where userid=#{userid}
+  </delete>
+  
+  <select id="getMemberList" resultType="com.example.demo.dto.MemberDto">
+    select * from member order by writeday desc
+  </select>
+  
+  <delete id="delNotice">
+    delete from notice where id=#{id}
+  </delete>
+
+  <delete id="delEvent">
+    delete from event where id=#{id}
+  </delete>
+  
+  <select id="adminInquiry" resultType="com.example.demo.dto.InquiryDto">
+    select i.*,p.title from inquiry as i inner join product as p on i.pcode=p.pcode
+    order by i.ref desc , i.qna asc
+  </select>
+  
+  <insert id="answer" parameterType="com.example.demo.dto.InquiryDto">
+    insert into inquiry(userid,content,pcode,ref,qna,writeday)
+    values('admin',#{content},#{pcode},#{ref},2,now())
+  </insert>
+
+  <!-- 작가와의만남 -->
+  <select id="adminLecture" resultType="com.example.demo.lecture.LectureDto">
+    select * from lecture
+    order by id desc
+  </select>
+
+  <select id="adminLecturePaging" resultType="com.example.demo.lecture.LectureDto">
+    SELECT * FROM lecture
+    ORDER BY id DESC
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="lectureCount" resultType="int">
+    SELECT COUNT(*) FROM lecture
+  </select>
+
+  <insert id="lectureRegisterOk" parameterType="com.example.demo.lecture.LectureDto">
+    insert into lecture(title,limg,sday,eday,max,price01,price02,time)
+    values(#{title},#{limg},#{sday},#{eday},#{max},#{price01},#{price02},#{time})
+  </insert>
+
+  <select id="lectureModify" resultType="com.example.demo.lecture.LectureDto">
+    select * from lecture
+    where id=#{id}
+  </select>
+
+  <update id="lectureModifyOk" parameterType="com.example.demo.lecture.LectureDto">
+    update lecture
+    set title=#{title}, limg=#{limg}, sday=#{sday}, eday=#{eday}, max=#{max}, price01=#{price01}, price02=#{price02}, time=#{time}
+    where id=#{id}
+  </update>
+
+  <delete id="delLecture">
+    delete from lecture where id=#{id}
+  </delete>
+  
+</mapper>

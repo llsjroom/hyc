@@ -1,0 +1,431 @@
+@charset "UTF-8";
+
+/* common */
+* {margin: 0; padding: 0;font-family: 'Pretendard','맑은 고딕',sans-serif;}
+ul {list-style: none;}
+a {text-decoration: none; color: inherit;}
+input {outline: none;}
+
+.inner {
+  margin: 0 auto;
+  width: 1280px;
+}
+
+body.noScroll {
+  overflow: hidden;
+}
+
+/* header */
+#header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 20px 0;
+  border-bottom: 3px solid #4A90E2;
+  background-color: #fff;
+}
+
+#header .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#header .logo {
+  width: 120px;
+  height: 50px;
+  flex: 0 0 auto;
+}
+#header .logo a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: url(/static/images/main/logo.png) center center no-repeat;
+  background-size: contain;
+}
+#header .menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#header .menu > li {
+  padding: 0 50px;
+}
+#header .menu > li a {
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1C1C1C;
+}
+#header .menu > li .subMenu {
+  display: none;
+  position: absolute;
+  top:90px;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+  background-color: #4A90E2;
+  z-index: 2;
+  display: none;
+}
+#header .menu > li .subMenu.open {
+  display: block;
+  box-sizing: border-box;
+}
+#header .menu > li .subMenu .menuList {
+  /* margin: 0 auto;
+  width: 1280px; */
+  display: flex;
+  align-items: center;
+}
+#header .menu > li .subMenu .menuList > li {
+  padding: 0 30px;
+  flex: 0 0 auto;
+}
+#header .menu > li .subMenu .menuList > li a {
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+#header .myLink {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+#header .myLink .linkList {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+#header .myLink .linkList > li {
+  padding: 0 3px;
+}
+#header .myLink .linkList > li a:not([class^=icon]) {
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #1C1C1C;
+}
+#header .myLink .linkList > li a[class^=icon] {
+  font-size: 0;
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+#header .myLink .linkList > li a.iconUser {
+  background: url(/static/images/main/iconUser.png) center center / 100% no-repeat;
+}
+#header .myLink .linkList > li a.iconCart {
+  background: url(/static/images/main/iconCart.png) center center / 85% no-repeat;
+}
+#header .myLink .linkList > li a.iconAdmin {
+  background: url(/static/images/main/iconAdmin.png) center center / 100% no-repeat;
+}
+#header .myLink .searchBtn {
+  margin-left: 20px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  background: url(/static/images/main/search.png) center center / 100% no-repeat;
+  font-size: 0;
+  border: none;
+  cursor: pointer;
+}
+
+#header #search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  display: none;
+}
+#header #search::after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: .8;
+  content:"";
+  z-index: -1;
+  display: none;
+}
+#header #search.show {
+  display: flex;
+}
+#header #search.show::after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: .8;
+  content:"";
+  z-index: -1;
+  display: block;
+}
+#header #search .searchField {
+  background-color: #fff;
+  width: 50%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid #4A90E2;
+}
+#header #search #schTxt {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 40px;
+  border:none;
+}
+#header #search #delBtn {
+  margin: 0 20px;
+  width: 50px;
+  height: 50px;
+  background: url(/static/images/main/delete.png) center center / contain no-repeat;
+  border:none;
+  opacity: .4;
+  flex: 0 0 auto;
+  visibility: hidden;
+  cursor: pointer;
+}
+#header #search #schBtn {
+  width: 100px;
+  height: 100%;
+  background: url(/static/images/main/search_w.png) center center / 70% no-repeat #4A90E2;
+  border:none;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+#header #search #closeBtn {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  width: 50px;
+  height: 50px;
+  background: url(/static/images/main/close_w.png) center center / 100% no-repeat ;
+  border:none;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+#header + div,
+#header + section {
+  min-height: calc(100vh - 93px - 202px);
+  box-sizing: border-box;
+}
+
+/* body */
+#move {
+  position: fixed;
+  visibility: hidden;
+  right: 50px;
+  bottom: 50px;
+  opacity: 0;
+  transition: all .3 ease-in-out;
+}
+#move.show {
+  visibility: visible;
+  opacity: 1;
+  transition: all .3 ease-in-out;
+}
+#move .btnKakao,
+#move #btnTop {
+  width: 50px;
+  height: 50px;
+  font-size: 0;
+  display: block;
+  border: none;
+  outline: none;
+}
+#move .btnKakao {
+  background: url(/static/images/common/btnKakao.png) center center / 100% auto no-repeat;
+}
+#move #btnTop {
+  background: url(/static/images/common/btnTop.png) center center / 100% auto no-repeat;
+  cursor: pointer;
+}
+#move > * + * {
+  margin-top: 10px;
+}
+
+/* footer */
+#footer {
+  position: relative;
+  margin-top: 50px;
+  background: #F8F9FA;
+  border-top: 1px solid #EDEDED;
+}
+#footer .inner {
+  padding: 50px 0;
+  display: flex;
+  align-items: center;
+}
+#footer .logo {
+  width: 150px;
+  opacity: .6;
+  flex: 0 0 auto;
+}
+#footer .logo img {
+  width: 100%;
+  display: block;
+}
+#footer .info {
+  padding-left: 50px;
+}
+#footer .info > li {
+  margin-right: 30px;
+  font-size: 14px;
+  color: #6C757D;
+  display: inline-block;
+}
+#footer .info > li:last-child {
+  margin-right: 0;
+}
+
+
+/* Admin Layout */
+#admin {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* 
+  
+  grid-template-rows: auto 30px; */
+}
+#admin #adminWrap {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+}
+#admin #adminSideBar {
+  flex: 0 0 200px;
+  background: #212529;
+}
+#admin #adminSideBar .logo {
+  padding: 20px;
+  width: 200px;
+  background: #F8F9FA;
+  border: 5px solid #212529;
+  box-sizing: border-box;
+}
+#admin #adminSideBar .logo img {
+  width: 100%;
+}
+#admin #adminSideBar .link > li {
+  border-bottom: 1px solid #ADB5BD;
+}
+#admin #adminSideBar .link > li:first-child {
+  border-top: 1px solid #ADB5BD;
+}
+#admin #adminSideBar .link > li > a {
+  padding: 20px 10px;
+  color: #ADB5BD;
+  transition: color .3 ease-in-out;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+}
+#admin #adminSideBar .link > li .sub {
+  padding-bottom: 15px;
+  display: none;
+}
+#admin #adminSideBar .link > li .sub.show {
+  display: block;
+}
+#admin #adminSideBar .link > li .sub li {
+  position: relative;
+  margin-left: 15px;
+  padding-left: 10px;
+}
+#admin #adminSideBar .link > li .sub li::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: url(/static/images/admin/arrowR_w.png) center center / 100% no-repeat;
+  content:"";
+  opacity: .6;
+}
+#admin #adminSideBar .link > li .sub li a {
+  padding: 5px 10px;
+  color: #ADB5BD;
+  transition: color .3 ease-in-out;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+}
+#admin #adminSideBar .link > li.now a {
+  color: #fff;
+  transition: color .3 ease-in-out;
+}
+#admin #adminSideBar .link > li a:hover {
+  color: #fff;
+}
+#admin #adminSideBar .link > li.now .sub li.this::after {
+  opacity: 1;
+}
+#admin #adminSideBar .link > li.now .sub li.this a {
+  color: #fff;
+}
+
+#adminPage {
+  /* padding: 0 100px; */
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+#admin #adminFooter {
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #F8F9FA;
+  border-top: 1px solid #EDEDED;
+  font-size: 14px;
+  color: #6C757D;
+  text-align: center;
+}
+/*
+참고
+
+Bg
+#F8F9FA (footer)
+
+Border
+#EDEDED
+
+Point
+#4A90E2
+
+Text
+#1C1C1C
+#495057 (기본)
+#6C757D (중간강조_부제, 설명)
+#868E96 (흐릿한느낌_부가정보, 날씨)
+#ADB5BD	(연한느낌_placeholder)
+
+
+etc
+#F5F5F5 (라이트 그레이)
+*/

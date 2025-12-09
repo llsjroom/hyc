@@ -1,0 +1,111 @@
+ body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 50px 0;
+    color: #333;
+  }
+
+  section {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  h3 {
+    text-align: center;
+    color: #007acc;
+    margin-bottom: 25px;
+  }
+
+  form div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="text"], select {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  input[type="text"]:focus, select:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0,122,204,0.3);
+  }
+
+  input[type="button"] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.3s;
+  }
+
+  input[type="button"]:hover {
+    background-color: #005f99;
+  }
+
+  /* 체크박스와 글씨 한 줄 */
+  .checkbox-container {
+    display: inline-flex;      /* 한 줄에 붙도록 */
+    align-items: center;       /* 수직 중앙 정렬 */
+    gap: 5px;                  /* 체크박스와 글자 사이 간격 */
+    font-size: 1rem;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.2);     /* 체크박스만 키우기 */
+    margin: 0;                 /* 기본 margin 제거 */
+  }
+
+  #postcodeContainer {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 550px) {
+    section {
+      width: 95%;
+      padding: 20px;
+    }
+    input[type="text"], select, input[type="button"] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  
+ input[type="submit"] {
+  background-color: #5bc0de; /* 하늘색 */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #31b0d5; /* 조금 진한 하늘색 */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}

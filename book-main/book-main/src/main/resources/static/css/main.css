@@ -1,0 +1,110 @@
+#main #visual {
+  width: 100%;
+  height: 340px;
+}
+#main #visual .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+#main #visual .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#main #visual .swiper-slide img {
+  display: block;
+  /* width: 100%; */
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet, 
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+}
+#main #visual .swiper-pagination-bullet {
+  border: 1px solid #868E96;
+}
+#main #visual .swiper-pagination-bullet-active {
+  /* background: #4A90E2; */
+  background: #000;
+  border: 1px solid #868E96;
+}
+
+
+#main .section {
+  padding: 50px 0;
+}
+#main .section + .section {
+  border-top: 1px solid #C4C8D9;
+}
+#main .section .secTit {
+  position: relative;
+  padding: 20px 0;
+  font-size: 30px;
+}
+#main .section .secCont {
+  position: relative;
+  /* border-top: 1px solid #F1F3FA; */
+}
+#main .section .secCont .moveBtn {
+  position: absolute;
+  right: 0;
+  top: -40px;
+  padding-right: 15px;
+  font-size: 14px;
+  color: #868E96;
+  background: url(/static/images/main/arrowR_g.png) right center / 12px auto no-repeat;
+  border: none;
+}
+#main .section .secCont .bookList {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+#main .section .secCont .bookList li {
+  flex: 0 0 0;
+}
+#main .section .secCont .bookList li .prod {
+  width: 180px;
+}
+#main .section .secCont .bookList li .prod .img {
+  margin: 0 auto;
+  width: 100%;
+  height: 236px;
+  border: 1px solid #ADB5BD;
+  overflow: hidden;
+}
+#main .section .secCont .bookList li .prod .img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#main .section .secCont .bookList li .prod .tit {
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 48px;
+}
+#main .section .secCont .bookList li .prod .info .price01 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4A90E2;
+}
+#main .section .secCont .bookList li .prod .info .price02 {
+  font-size: 14px;
+  color: #868E96;
+}

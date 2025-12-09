@@ -1,0 +1,155 @@
+/* 공통 */
+body {
+  margin: 0;
+  padding: 0;
+}
+[class*="btn0"] {
+  border: none;
+  transition: background .3s ease-in;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: fit-content;
+  min-width: 60px;
+  height: 30px;
+}
+.btn01 {
+  background: #4A90E2;
+  /* border: 1px solid #2C6CC9; */
+  color: #fff;
+}
+.btn01:hover {
+  background: #2C6CC9;
+}
+.btn02 {
+  background-color: #888;
+  /* border: 1px solid #666; */
+  color: #fff;
+}
+.btn02:hover {
+  background: #666;
+}
+.btn03 {
+  background: #fff;
+  border: 1px solid #4A90E2;
+  color: #4A90E2;
+}
+.btn03:hover {
+  border: 1px solid #2C6CC9;
+}
+.btn04 {
+  background: #fff;
+  border: 1px solid #888;
+  color: #666;
+}
+.btn04:hover {
+  border: 1px solid #666;
+  color: #4b4b4b;
+}
+
+.baesongWrap {
+  padding: 10px;
+  width: 100%;
+  height: calc(100vh - 60px);
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.baesong {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.baesong:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.baesong:last-of-type {
+  margin-bottom: 60px;
+}
+.baesongTop {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.baesong .name {
+  font-weight: bold;
+  font-size: 18px;
+}
+#gibon {
+  background-color: #495057;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+.juso, .phone, .req {
+  font-size: 0.95em;
+  color: #495057;
+}
+.btnWrap {
+  position: absolute;
+  top: 18px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+.btnWrap [class^=btn0] {
+  padding: 0 4px;
+  min-width: auto;
+  width: fit-content;
+  height: fit-content;
+  background: none;
+  border: none;
+}
+.btnWrap i {
+  width: 1px;
+  height: 12px;
+  background: #666;
+}
+.btnWrap .btn02 {
+  color: #666;
+}
+.baesong > [class^=btn0] {
+  margin: 10px auto 0;
+}
+.fixBtn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+}
+#baeBtn {
+  border: none;
+  transition: background .3s ease-in;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #4A90E2;
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+#baeBtn:hover {
+  background: #2C6CC9;
+}

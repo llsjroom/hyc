@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.login.LoginMapper">
+
+  <select id="loginOk" resultType="String" parameterType="com.example.demo.dto.MemberDto">
+    select name from member
+    where userid=#{userid} and pwd=#{pwd}
+  </select>
+  
+  <select id="useridSearch" resultType="String">
+    select userid from member
+    where name=#{name} and email=#{email}
+  </select>
+  
+  <select id="pwdSearch" resultType="String">
+    select pwd from member
+    where name=#{name} and email=#{email} and userid=#{userid}
+  </select>
+  
+  <insert id="addCart">
+    insert into cart(userid,pcode,su,writeday)
+    values(#{userid},#{pcode},#{su}, now())
+  </insert>
+  
+  <update id="upCart">
+    update cart set su=su+#{su}
+    where userid=#{userid} and pcode=#{pcode}
+  </update>
+  
+  <select id="isCart" resultType="Boolean">
+    select count(*) from cart
+    where userid=#{userid} and pcode=#{pcode}
+  </select>
+</mapper>
+
+
+
+
+
+
+

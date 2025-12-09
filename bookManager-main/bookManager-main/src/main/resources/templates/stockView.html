@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default"
+>
+<head>
+<meta charset="UTF-8">
+<title>스톡</title>
+<style>
+  .caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .caption input[type=button] {
+    padding: 0 10px;
+    width: auto;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: #222;
+    border: 1px solid #222;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 0 3px #999;
+    cursor: pointer;
+  }
+  .caption #daeclass {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    /* background: #f1f1f1;
+    border: 1px solid #999; */
+    font-size: 14px;
+  }
+  .caption #daeclass select {
+    padding: 0 5px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #222;
+    background: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  body.noScroll {
+    overflow: hidden;
+  }
+  body.noScroll::after {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: .5;
+    content: "";
+  }
+  #jumunLayer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px 20px;
+    background:#fff;
+    height: 500px;
+    overflow-y: auto;
+    z-index: 1;
+    display: none;
+  }
+  #jumunLayer.open {
+    display: flex;
+    flex-direction: column;
+  }
+  #jumunLayer h3 {
+    flex: 0;
+  }
+  #jumunLayer .tbl {
+    width: 600px;
+    flex: 1;
+    border-top:2px solid #222;
+  }
+  #jumunLayer .tbl table {
+    border-top: 0;
+  }
+  #jumunLayer .btnClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+</style>
+<script th:inline="javascript">
+  function jumun(pcode,n)
+  {
+    //  var su=document.getElementsByClassName("su")[n].value;
+    //  location = "jumunOk?pcode=" + pcode + "&su=" + su + "&dae=" + [[${dae}]] + "&page=" + [[${page}]] + "&rec=" + [[${rec}]];
+    var su=document.getElementsByClassName("su")[n].value;
+    location = "jumunOk?pcode=" + pcode + "&su=" + su + "&dae=" + [[${dae}]] + "&page=" + [[${page}]] + "&rec=" + [[${rec}]];
+  }
+
+  window.onload=function()
+  {
+    // document.getElementById("cla").value = /*[[${dae}]]*/ 'A1';
+    // document.getElementById("pageSel").value='[[${page}]]';
+    // document.getElementById("pageRec").value='[[${rec}]]';
+    document.getElementById("cla").value = /*[[${dae}]]*/ 'A1';
+    document.getElementById("pageSel").value = /*[[${page}]]*/ '1';
+    document.getElementById("pageRec").value = /*[[${rec}]]*/ '10';
+  }
+
+  function pageMove(selectedPage)
+  {
+    // location = "stockView?page=" + selectedPage + "&dae=" + "[[${dae}]]" + "&rec=" + document.getElementById("pageRec").value;
+    var dae = document.getElementById("cla").value;
+    var rec = document.getElementById("pageRec").value;
+      location = "stockView?page=" + selectedPage + "&dae=" + dae + "&rec=" + rec;
+  }
+
+  function recChange(rec)
+  {
+    var dae = document.getElementById("cla").value;
+    var page = document.getElementById("pageSel").value;
+    location = "stockView?rec=" + rec + "&dae=" + dae + "&page=" + page;
+  }
+
+  function viewJumun()
+  {
+    document.querySelector("body").classList.add("noScroll");
+    document.getElementById("jumunLayer").classList.add("open");
+
+    var dae = document.getElementById("cla").value;
+    var chk=new XMLHttpRequest
+    chk.onload=function()
+    {
+    var jumuns=JSON.parse(chk.responseText);
+
+    var str="<h3>주문내역</h3>";
+        str=str+"<div class='tbl'>";
+        str=str+"<table>";
+        str=str+" <colgroup> ";
+        str=str+"  <col width='*'/> ";
+        str=str+"  <col width='120px'/> ";
+        str=str+"  <col width='120px'/> ";
+        str=str+"  <col width='120px'/> ";
+        str=str+"  <col width='120px'/> ";
+        str=str+" </colgroup> ";
+        str=str+" <thead> ";
+        str=str+" <tr align='center'> ";
+        str=str+"  <td> 상품명 </td> ";
+        str=str+"  <td> 주문수량 </td> ";
+        str=str+"  <td> 주문상태 </td> ";
+        str=str+"  <td> 주문일자 </td> ";
+        str=str+"  <td> 주문자 </td> ";
+        str=str+" </tr> ";
+        str=str+" </thead> ";
+        str=str+" <tbody> ";
+
+        for(jumun of jumuns)
+        {
+          if(jumun.state==0)
+            var state="주문중";
+          else
+            var state="주문완료"
+                str=str+" <tr align='center'> ";
+                str=str+"  <td align='left'> "+jumun.title+" </td> ";
+                str=str+"  <td> "+jumun.su+" </td> ";
+                str=str+"  <td> "+state+" </td> ";
+                str=str+"  <td> "+jumun.writeday+" </td> ";
+                str=str+"  <td> "+jumun.jumunMan+" </td> ";
+                str=str+" </tr>";
+        }
+        str=str+" </tbody> ";
+        str=str+"</table>";
+        str=str+"</div>";
+        str=str+"<input class='btnClose' type='button' value='close' onclick='hideLayer()'> ";
+
+        document.getElementById("jumunLayer").innerHTML=str;
+    }
+     // chk.open("get","jumunList?dae="+'[[${dae}]]');
+     //chk.open("get", "jumunList?dae=" + encodeURIComponent(dae));
+     //chk.open("GET", `jumunList?dae=${encodeURIComponent(dae)}`);
+    // var dae = '[[${dae}]]';
+    // chk.open("GET", "jumunList?dae=" + encodeURIComponent(dae))
+    // chk.send();
+    
+
+    chk.open("GET", "jumunList?dae=" + encodeURIComponent(dae));
+    chk.send();
+  }
+  
+  function hideLayer()
+  {
+    document.querySelector("body").classList.remove("noScroll");
+    document.getElementById("jumunLayer").classList.remove("open");
+  }
+</script>
+</head>
+<body>
+  <th:block layout:fragment="content">
+    <div id="jumunLayer"></div>
+    <h3> 상품현황 </h3>
+    <div class="caption">
+      <div id="daeclass">
+        카테고리
+        <!-- <select id="cla" onchange="location='stockView?dae='+this.value">
+          <option value="A1">소설/문학</option>
+          <option value="B1">비소설/교양</option>
+          <option value="C1">경제/경영</option>
+          <option value="D1">과학/기술</option>
+        </select> -->
+        <select id="cla" onchange="location='stockView?dae='+this.value">
+         <option value="A1" th:selected="${dae == 'A1'}">소설/문학</option>
+         <option value="B1" th:selected="${dae == 'B1'}">비소설/교양</option>
+         <option value="C1" th:selected="${dae == 'C1'}">경제/경영</option>
+         <option value="D1" th:selected="${dae == 'D1'}">과학/기술</option>
+        </select>
+        <input type="button" value="주문내역" onclick="viewJumun()">
+      </div>
+      <div class="sorting">
+        목록 수
+        <select name="pageRec" id="pageRec" onchange="recChange(this.value)">
+          <option value="10">10권</option>
+          <option value="20">20권</option>
+          <option value="30">30권</option>
+          <option value="50">50권</option>
+        </select>
+
+        페이지 수
+        <select id="pageSel" onchange="pageMove(this.value)">
+          <th:block th:each="i : ${#numbers.sequence(1,chong)}">
+            <option th:value="${i}" th:text="${i + ' page'}"></option>
+          </th:block>
+        </select>
+      </div>
+    </div>
+    <table>
+      <colgroup>
+        <col width="150px">
+        <col width="*">
+        <col width="150px">
+        <col width="150px">
+        <col width="150px">
+        <col width="150px">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>이미지</th>
+          <th>상품명</th>
+          <th>재고</th>
+          <th>판매수량</th>
+          <th>주문하기</th>
+          <th>주문현황</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="pdto, sts : ${plist}">
+          <td><img th:src="${'/static/temp/product/'+pdto.pimg}" width="40" height="40"></td>
+          <td th:text="${pdto.title}"></td>
+          <td th:text="${pdto.su}"></td>
+          <td th:text="${pdto.pansu}"></td>
+          <td>
+            <select class="su">
+              <th:block th:each="i:${#numbers.sequence(100,1,-1)}">
+                <option th:value="${i}" th:text="${i}"></option>
+              </th:block>
+            </select>
+            <input type="button" value="주문" th:attr="onclick=|jumun('${pdto.pcode}', ${sts.index})|">
+          </td>
+          <td>
+            <th:block th:if="${pdto.writeday!=null}">
+              <span th:text="${pdto.jsu+'권'}"></span>
+              |
+              <span th:if="${pdto.state==0}" th:text="주문중"></span>
+              <span th:if="${pdto.state==1}" th:text="주문완료"></span>
+            </th:block>
+
+            <th:block th:if="${pdto.writeday==null}">
+              주문내역없음
+            </th:block>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </th:block>
+</body>
+</html>

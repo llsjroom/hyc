@@ -1,0 +1,659 @@
+/* 공통 */
+[class*="btn0"] {
+  border: none;
+  transition: background .3s ease-in;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-sizing: border-box;
+  min-width: fit-content;
+}
+.btn01 {
+  background: #4A90E2;
+  /* border: 1px solid #2C6CC9; */
+  color: #fff;
+}
+.btn01:hover {
+  background: #2C6CC9;
+}
+.btn02 {
+  background-color: #888;
+  /* border: 1px solid #666; */
+  color: #fff;
+}
+.btn02:hover {
+  background: #666;
+}
+.btn03 {
+  background: #fff;
+  border: 1px solid #4A90E2;
+  color: #4A90E2;
+}
+.btn03:hover {
+  border: 1px solid #2C6CC9;
+}
+.btn04 {
+  background: #fff;
+  border: 1px solid #888;
+  color: #666;
+}
+.btn04:hover {
+  border: 1px solid #666;
+  color: #4b4b4b;
+}
+
+/* 회원가입 */
+#join {
+  padding: 50px 0;
+  color: #495057;
+}
+#join h3.page {
+  margin-bottom: 20px;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #1c1c1c;
+  text-align: center;
+}
+#join .tableBg {
+  margin: 0 auto;
+  padding: 50px;
+  width: 600px;
+  background-color: #F0F6FB;
+  border-top: 1px solid #1c1c1c;
+}
+#join table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+#join table th,
+#join table td {
+  padding: 0 5px;
+  color: #1c1c1c;
+}
+#join table th {
+  position: relative;
+  text-align: left;
+  padding-top: 10px;
+}
+#join table td {
+  position: relative;
+  padding-bottom: 24px;
+}
+#join table td input {
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+}
+#join table td input[type="text"],
+#join table td input[type="password"] {
+  padding: 10px;
+  height: 40px;
+}
+#join table td [id*="msg"] {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  font-size: 12px;
+}
+#join .btnWrap {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#join .btnWrap [class*="btn"] {
+  width: 80px;
+  height: 40px;
+}
+#join .btnWrap a,
+#join .btnWrap input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+#join .btnWrap a + input {
+  margin-left: 10px;
+}
+
+/* 회원정보 수정 */
+#edit {
+  padding: 50px 0;
+  color: #495057;
+}
+#edit h3.page {
+  margin-bottom: 20px;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #1c1c1c;
+  text-align: center;
+}
+#edit .tableBg {
+  margin: 0 auto;
+  padding: 50px;
+  width: 600px;
+  background-color: #F0F6FB;
+  border-top: 1px solid #1c1c1c;
+}
+#edit table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  /* border-top: 1px solid #1c1c1c;
+  border-bottom: 1px solid #1c1c1c; */
+}
+#edit table th,
+#edit table td {
+  position: relative;
+  padding: 15px 10px;
+  color: #1c1c1c;
+  text-align: left;
+}
+#edit table td input {
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+}
+#edit table td input[type="text"],
+#edit table td input[type="password"] {
+  padding: 10px;
+  height: 40px;
+}
+#edit table td [id*="msg"],
+#edit table td .msg {
+  position: absolute;
+  top: 65px;
+  left: 10px;
+  font-size: 12px;
+  color: #FF1744;
+}
+#edit .btnWrap {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#edit .btnWrap [class*="btn"] {
+  padding: 0 10px;
+  min-width: 80px;
+  width: fit-content;
+  height: 40px;
+}
+#edit .btnWrap a,
+#edit .btnWrap input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+/* 게시판 목록 */
+#list {
+  padding: 50px 0;
+  color: #495057;
+}
+#list h3.page {
+  margin-bottom: 20px;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #1c1c1c;
+}
+#list table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  border-top: 1px solid #1c1c1c;
+  border-bottom: 1px solid #1c1c1c;
+}
+#list table th,
+#list table td {
+  padding: 15px 10px;
+  color: #1c1c1c;
+}
+#list table th {
+  border-bottom: 1px solid #1c1c1c;
+}
+#list table tr:not(:first-child) td {
+  border-top: 1px solid #ADB5BD;
+}
+#list table td:not(.tit) {
+  text-align: center;
+}
+#list table td.tit a:hover {
+  text-decoration: underline;
+}
+#list table td .btnWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+#list table td .btnWrap [class^="btn"] {
+  padding: 5px;
+  width: 60px;
+}
+#list table td .noList {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#list table + .btnWrap {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+}
+#list table + .btnWrap [class^="btn"] {
+  padding: 0 10px;
+  min-width: 80px;
+  height: 40px;
+}
+#list table + .btnWrap [class^="btn"] +  [class^="btn"] {
+  margin-left: 10px;
+}
+
+/* 회원가입 */
+#list .mypage {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 50px;
+}
+#list .mypage .sec:nth-child(even) {
+  flex: 0 0 400px;
+}
+#list .mypage .sec .secTit {
+  margin-bottom: 30px;
+  display: block;
+}
+#list .mypage table tr:not(:first-child) th,
+#list .mypage table tr:not(:first-child) td {
+  border-top: 1px solid #ADB5BD;
+}
+#list .mypage table tr:not(:last-child) th {
+  border-bottom: 1px solid #ADB5BD;
+}
+#list .mypage table tr:first-child td {
+  border-top: 1px solid #1c1c1c;
+}
+#list .mypage table th,
+#list .mypage table td {
+  text-align: left;
+  background-color: #fff;
+}
+#list .mypage .btnWrap {
+  justify-content: center;
+}
+#list .mypage .mypageLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+#list .mypage .mypageLink + .mypageLink {
+  margin-top: 30px;
+}
+#list .mypage .mypageLink dt {
+  font-size: 16px;
+  color: #1c1c1c;
+  font-weight: 600;
+}
+#list .mypage .mypageLink dd a {
+  font-size: 14px;
+  color: #6C757D;
+}
+#list .mypage .mypageLink dd a.moveBtn {
+  padding-right: 15px;
+  font-size: 14px;
+  color: #868E96;
+  background: url(/static/images/main/arrowR_g.png) right center / 12px auto no-repeat;
+  border: none;
+}
+#list .mypage .tableBg {
+  margin: 0 auto;
+  padding: 50px;
+  width: 600px;
+  background-color: #F0F6FB;
+  border-top: 1px solid #1c1c1c;
+}
+
+/* 장바구니 */
+#list.cartWrap tfoot td {
+  border-top: 1px solid #1c1c1c;
+  background-color: #f8f8f880;
+}
+#list.cartWrap td [class^=btn0] {
+  width: 60px;
+  height: 30px;
+}
+#list.cartWrap #number {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ADB5BD;
+}
+#list.cartWrap #number .minus,
+#list.cartWrap #number .plus {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+#list.cartWrap #number .minus:after,
+#list.cartWrap #number .plus:after,
+#list.cartWrap #number .plus:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 2px;
+  background: #4b4b4bcc;
+  content:""
+}
+#list.cartWrap #number .plus:before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+#list.cartWrap #number input[type="text"] {
+  background: none;
+  border: 1px solid #ADB5BD;
+  border-top: none;
+  border-bottom: none;
+  width: 50px;
+  height: 24px;
+  text-align: center;
+  font-size: 16px;
+}
+#list.cartWrap .total {
+  /* display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px; */
+  text-align: right;
+}
+#list.cartWrap .total li {
+  padding: 3px 0;
+}
+#list.cartWrap .total li b {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+#list.cartWrap .total li b#allPay {
+  color: #2962FF;
+}
+
+/* 찜 리스트 */
+.cartWrap td .btnWrap {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+  gap: 5px;
+}
+#cartMsg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  min-width: 220px;
+  background-color: #4b4b4bcc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+#cartMsg [class^=btn0] {
+  margin: 20px auto 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+}
+/* #cartMsg .btnClose {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 24px;
+  height: 24px;
+  background: url(/static/images/common/close_w.png) center center / 16px no-repeat;
+  font-size: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+} */
+
+#register {
+  padding: 50px 0;
+  color: #495057;
+}
+#register h3.page {
+  margin-bottom: 20px;
+  padding: 30px 0;
+  font-size: 30px;
+  color: #1c1c1c;
+}
+#register .tableBg {
+  padding: 50px;
+  background-color: #F0F6FB;
+  border-top: 1px solid #1c1c1c;
+}
+#register table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+#register table th,
+#register table td {
+  padding: 0 5px;
+  color: #1c1c1c;
+}
+#register table th {
+  position: relative;
+  text-align: left;
+  padding-top: 10px;
+}
+#register table td input,
+#register table td textarea {
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+}
+#register table td input[type="text"] {
+  padding: 10px;
+  height: 40px;
+}
+#register table td textarea {
+  padding: 10px;
+  height: 300px;
+  resize: none;
+  outline: none;
+  line-height: 1.4;
+}
+#register .btnWrap {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+#register .btnWrap [class*="btn"] {
+  padding: 0 10px;
+  width: 80px;
+  height: 40px;
+}
+#register .btnWrap a,
+#register .btnWrap input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+#register .btnWrap a + input {
+  margin-left: 10px;
+}
+
+#inquiryUpForm {
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 21;
+  padding: 30px;
+  background-color: #f8f8f8;
+  border: 1px solid #ADB5BD;
+}
+#inquiryUpForm .inputBox {
+  position: relative;
+  margin: 10px 0;
+}
+#inquiryUpForm .inputBox textarea {
+  padding: 5px 5px 24px;
+  width: 400px;
+  height: 160px;
+  border: 1px solid #ADB5BD;
+  outline: none;
+  resize: none;
+  display: block;
+}
+#inquiryUpForm .inputBox textarea + p {
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  right: 1px;
+  background-color: #fff;
+  padding: 5px;
+  font-size: 12px;
+  color: #868E96;
+  text-align: right;
+  line-height: 14px;
+}
+#inquiryUpForm .btnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+}
+#inquiryUpForm [class*="btn0"] {
+  float: right;
+  padding: 0 10px;
+  width: 80px;
+  height: 40px;
+  min-width: fit-content;
+}
+#inquiryUpForm + .mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000cc;
+  content:"";
+  z-index: 20;
+}
+
+/* 기간검색 */
+.calBox {
+  position: relative;
+  margin-bottom: 50px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+}
+.calBox [class^=btn0] {
+  padding: 0 5px;
+  min-width: fit-content;
+  width: 60px;
+  height: 30px;;
+}
+.calBox [class^=btn0] + [class^=btn0] {
+  border-left: none;
+}
+.calBox .btnWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+}
+.calBox input[type=text] {
+  padding: 0 5px;
+  height: 30px;
+  outline: none;
+  box-sizing: border-box;
+  border: 1px solid #495057;
+  color: #495057;
+  background: #fff;
+}
+.calBox form {
+  margin: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+}
+
+.calBox #calendar.show {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 55px;
+  padding: 20px;
+  width: 300px;
+  height: fit-content;
+  background: #fff;
+  box-shadow: 0 0 10px #888;
+}
+.calBox #calendar .topBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.calBox #calendar .topBox a {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: url(/static/images/common/arrowR_w.png) 5px center / 60% no-repeat #4A90E2;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  overflow: hidden;
+  display: inline-block;
+}
+.calBox #calendar .topBox a.prevB {
+  transform: rotateZ(180deg);
+}
+.calBox #calendar .topBox a.nextB {
+  transform: rotateZ(0deg);
+}
+.calBox #calendar th,
+.calBox #calendar td {
+  padding: 5px 10px;
+}
+.calBox #calendar td {
+  cursor: pointer;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/static/common.css">
+</head>
+<body> <!-- default.html -->
+  <div id="wrap">
+    <!-- 로그인 후 -->
+    <header th:if="${session.level != null}">
+      
+      <h2><b th:text="${session.name+'님'}"></b>의 관리자 페이지입니다.</h2>
+      <nav>
+        <ul>
+          <li><a href="jumunCheck">입고관리</a></li>
+          <li><a href="stockView">재고현황</a></li>
+          <li><a href="couponList">쿠폰관리</a></li>
+          <li><a href="memberList">관리자</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="content">
+      <th:block layout:fragment="content"></th:block>
+    </div>
+    
+    <footer>
+      ⓒ 2025 ezen-B Corp.
+      <p class="btnLogout" th:if="${session.level != null}">
+        <input type="button" value="logout" onclick="location='logout'"> 
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
